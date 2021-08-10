@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ASM.Models.ViewModels.ViewLogin
+
+<div class="card">
+    <div class="card-header p-0 m-0">
+        <h1 class="bg-warning text-dark p-5"><img src="~/images/login/logo-websitepng-9050.png" /> Đăng Nhập</h1>
+    </div>
+    <div card-body>
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="row pl-5 mb-5">
+            <div class="col-md-4">
+                <form asp-action="Login" method="post">
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <div class="form-group">
+                        <label asp-for="UserName">Tên Đăng Nhập</label>
+                        <input asp-for="UserName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password">Mật Khẩu</label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Đăng Nhập</button>
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>

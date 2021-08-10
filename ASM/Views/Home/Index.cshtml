@@ -1,0 +1,194 @@
+﻿@model IEnumerable<ASM.Models.MonAn>
+@{
+    Layout = "~/Views/Shared/_Weblayout.cshtml";
+}
+<header>
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .img-fluid:hover {
+            transform: scale(1.1);
+        }
+
+        .list-product {
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            margin-top: 10px;
+            margin-right: 10px;
+            width: 205px;
+        }
+
+        .img {
+            width: 150px;
+            display: block;
+            margin: auto;
+        }
+
+        .title {
+            color: #0e0e0e;
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            height: 60px;
+        }
+
+        .field-price {
+            font-size: 24px;
+            color: #d50000;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .viewProduct, .addProduct {
+            border: 0;
+            font-weight: 700;
+            padding: 9px 5px;
+            background: #ffd800;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            display: block;
+            width: 186px;
+            margin: 0 auto;
+            color: #0e0e0e;
+        }
+
+        .addProduct {
+            margin-left: 2px;
+        }
+    </style>
+</header>
+<body>
+    <div id="carouselExampleIndicators" class="container carousel slide pt-0 mb-3" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/images/carousel/h6.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/images/carousel/h4.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/images/carousel/h5.jpg" alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 pb-2">
+                <div class="card">
+                    <div class="card-body row pb-1">
+                        <div class="col-md-8 col-sm-8 text-center">
+                            <img src="~/images/monan/@item.Hinh" class="img-fluid " />
+                            <a class="addProduct text-center" style="margin-left:68px" href="javascript:addCart(@item.MonAnID);">
+                                Đặt hàng <img id="imgBusy_@item.MonAnID" src="~/images/monan/busy.gif" style="display:none" />
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="pt-5">
+                                <h4>
+                                    <span class="title text-danger"> @item.Name</span>
+                                </h4>
+                                <div class="field-price">@item.Gia VNĐ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+<footer class=" bg-warning">
+    <div class="p-2">
+        <div class="row text-left">
+            <div class="col-md-5 col-sm-5">
+                <h4 class="text-dark">Về chúng tôi</h4>
+                <p class="text-dark">Nguyễn Minh Nhật PS13276 Chuyên ngành ứng dụng phầm mền</p>
+                <p class="pt-4 text-dark">
+                    Bản quyền © 2021 Bảo lưu mọi quyền | Mẫu này được tạo bởi
+                    <span>Minh Nhật</span>
+                </p>
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <h4 class="text-dark">Bản tin</h4>
+                <p class="text-dark">Tiếp tục được cập nhật</p>
+                <form class="form-inline">
+                    <div class="col pl-0">
+                        <div class="input-group pr-5">
+                            <input type="text" class="form-control bg-dark text-white" id="inlineFormInputGroupUsername2" placeholder="Email">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2 col-sm-12">
+                <h4 class="text-dark">Theo Dõi chúng tôi</h4>
+                <p class="text-dark">Mạng Xã Hội Của Chúng Tôi</p>
+                <div class="column text-dark">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.google.com/intl/vi/account/about/"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@*<div class="list-product">
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <img src="~/images/monan/@item.Hinh" class="img-fluid"/>
+            <span class="title">@item.Name</span>
+            <div class="field-price">@item.Gia</div>
+            <a class="addProduct text-center" href="javascript:addCart(@item.MonAnID);">
+                Add order <img id="imgBusy_@item.MonAnID" src="~/images/monan/busy.gif" style="display:none"/></a>
+        </div>
+    }
+</div>*@
+<script>
+    function addCart(id) {
+        $("#imgCart").attr("src", '/images/monan/cartA.png');
+        $("#imgBusy_" + id).show();
+        setTimeout(function () {
+            $.ajax({
+                url: "/Home/AddCart?Id=" + id,
+                type: "Post",
+                success: function (result) {
+                    //alert(result);
+                },
+                error: function (e) {
+                    alert(this.url);
+                }
+            });
+            $("#imgBusy_" + id).hide();
+        }, 500);
+    }
+</script>

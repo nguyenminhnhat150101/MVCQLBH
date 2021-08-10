@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model ASM.Models.ViewWebLogin
+@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/dangnhap.css">
+<div class="container">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="row" style="background: #007bff;background: linear-gradient(to right, #1a2980, #26d0ce);">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center font-weight-bold">Đăng Nhập</h5>
+                    <form asp-action="Login" method="post" class="form-signin">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div class="form-label-group">
+                            <input type="text" id="inputUser" asp-for="Email" class=" form-control" required autofocus>
+                            <label asp-for="Email">Tài khoản</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword" asp-for="Password" class="form-control" required>
+                            <label for="inputPassword" asp-for="Password">Mật khẩu</label>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng nhập</button>
+                        </div>      
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
